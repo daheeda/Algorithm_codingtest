@@ -1,8 +1,7 @@
 from collections import Counter
 import sys
 input=sys.stdin.readline
-s=list(input().strip())
-s.sort()
+s=sorted(input().strip())
 counter = Counter(s)
 tf = 0
 res = []

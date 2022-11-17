@@ -1,0 +1,7 @@
+a=list(map(int,input()))
+a.sort(reverse=True)
+a=str(a).replace(" ",'')
+a=a.replace(",",'')
+a=a.replace("[",'')
+a=a.replace("]",'')
+print(a)

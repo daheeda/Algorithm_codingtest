@@ -1,5 +1,6 @@
 n = int(input())
 arr= []
+
 for _ in range(n):
     arr.append(list(map(int,input().split())))
 nlist = [128,64,32,16,8,4,2,1]

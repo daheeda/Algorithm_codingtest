@@ -1,0 +1,2 @@
+참고
+https://velog.io/@woo0_hooo/python-Bisect-%ED%95%A8%EC%88%98%EB%9E%80

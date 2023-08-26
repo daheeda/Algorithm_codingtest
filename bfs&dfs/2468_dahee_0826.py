@@ -3,20 +3,13 @@ import sys
 sys.setrecursionlimit(100000)
 
 n = int(input())
-area = []
-range_list = []
-
-for _ in range(n):
-    st = list(map(int,input().split()))
-    range_list += st
-    area.append(st)
+area = [list(map(int, input().split())) for _ in range(n)]
+range_list = set(sum(area,[]))
     
-range_list = set(range_list)
+dx = [-1,0,1,0]
+dy = [0,-1,0,1]
     
 def bfs(visit,y,x,dp):
-    
-    dx = [-1,0,1,0]
-    dy = [0,-1,0,1]
     
     for i in range(4):
         nx = dx[i] + x
@@ -33,7 +26,7 @@ def bfs(visit,y,x,dp):
         yy,xx = que.popleft()
         return bfs(visit,yy,xx,dp)
 
-res = 1
+res = [1]
 for dp in range_list:
     cnt = 0
     visit = [[0] * n for _ in range(n)]
@@ -44,7 +37,5 @@ for dp in range_list:
                     que = deque()
                     visit = bfs(visit,y,x,dp)
                     cnt += 1
-    if res < cnt :
-        res = cnt
-        
-print(res)
+    res.append(cnt)
+print(max(res))

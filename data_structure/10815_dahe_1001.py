@@ -1,16 +1,24 @@
 import sys
+input = sys.stdin.readline
 n = int(input())
-num = list(map(int,sys.stdin.readline().split()))
+cards = list(map(int,input().split()))
 m = int(input())
-num2 = list(map(int,sys.stdin.readline().split()))
+sg = list(map(int,input().split()))
 
-res=""
-num=set(num)
+cards.sort()
 
-for i in range(0,m):
-    try :
-        num.remove(num2[i])
-        res += "1 "
-    except :
-        res += "0 "
-print(res)
+def binary(left,right,ans):
+    if ans == cards[left] : return 1
+    elif ans == cards[right] : return 1
+    elif left+1 == right : return 0
+    else :
+        center = int((left+right)/2)
+        if cards[center] > ans : return binary(left,center,ans)
+        elif cards[center] == ans : return 1
+        else : return binary(center,right,ans)
+
+res = [0]*m
+for i in range(m):
+    res[i] = binary(0,n-1,sg[i])
+        
+print(' '.join(map(str, res)))

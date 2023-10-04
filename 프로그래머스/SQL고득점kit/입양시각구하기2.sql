@@ -1,0 +1,25 @@
+-- 코드를 입력하세요
+WITH RECURSIVE T AS (
+    SELECT 0 AS HOUR
+    UNION ALL
+    SELECT HOUR +1 AS HOUR
+    FROM T
+    WHERE HOUR < 23
+
+)
+SELECT T.HOUR, IFNULL(A.CNT,0) COUNT
+FROM T LEFT JOIN 
+            (SELECT HOUR(DATETIME) HOUR, COUNT(*) CNT
+            FROM ANIMAL_OUTS
+            GROUP BY HOUR
+            ) A ON T.HOUR = A.HOUR
+GROUP BY T.HOUR 
+ORDER BY T.HOUR
+
+
+
+/*
+
+
+
+*/
